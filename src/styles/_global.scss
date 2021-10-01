@@ -1,12 +1,13 @@
 html,
 body {
+  padding: 50px 0;
   background-color: $background;
 }
 .wrapper {
   width: calc(100vw - 100px);
   max-width: 1400px;
   height: 100%;
-  margin: 50px auto;
+  margin: 0 auto;
   background-color: $white;
   border-radius: 10px;
 }
