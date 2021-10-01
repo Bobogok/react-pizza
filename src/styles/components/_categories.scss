@@ -21,6 +21,9 @@
     &--active {
       color: $white;
       background-color: #282828;
+      &:hover {
+        background-color: darken(#282828, 5%);
+      }
     }
   }
 }
