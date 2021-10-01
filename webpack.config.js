@@ -6,7 +6,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const RemovePlugin = require('remove-files-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 
 const devMode = process.env.NODE_ENV === 'development';
 const prodMode = !devMode;
@@ -33,26 +32,11 @@ const optimization = () => {
 };
 
 const cssLoaders = (extra) => {
-  const loaders = [MiniCssExtractPlugin.loader, 'css-loader'];
+  const loaders = [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'];
 
   if (extra) {
     loaders.push(extra);
   }
-
-  // push after all extra - no conflict config
-  loaders.push({
-    loader: 'postcss-loader',
-    options: {
-      postcssOptions: {
-        plugins: [
-          autoprefixer({
-            overrideBrowserslist: ['ie >= 8', 'last 4 version']
-          })
-        ]
-      }
-      // sourceMap: true
-    }
-  });
 
   return loaders;
 };
@@ -105,6 +89,7 @@ const plugins = () => {
 };
 
 module.exports = {
+  stats: 'normal',
   context: path.resolve(__dirname, 'src'),
   entry: './index.jsx',
   output: {
