@@ -14,6 +14,7 @@
     color: $main;
     border-bottom: 1px dashed $main;
     cursor: pointer;
+    user-select: none;
   }
   &__popup {
     position: absolute;
