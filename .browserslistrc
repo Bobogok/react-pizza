@@ -1,4 +1,9 @@
+[production]
 last 15 versions
-ie >= 8
+ie >= 9
 not dead
 > 0.2%
+
+[development]
+last 1 chrome version
+last 1 firefox version

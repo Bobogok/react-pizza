@@ -88,8 +88,6 @@ const plugins = () => {
   return base;
 };
 
-console.log(path.join(__dirname, 'public'));
-
 module.exports = {
   stats: 'normal',
   // context: path.resolve(__dirname, 'src'),
