@@ -1,9 +1,11 @@
 .sort {
   position: relative;
+
   &__inner {
     display: flex;
     align-items: center;
   }
+
   &__icon {
     margin-right: 8px;
     transform: rotate(180deg);
@@ -12,15 +14,18 @@
       transform: rotate(0deg);
     }
   }
+
   &__text {
     margin-right: 8px;
   }
+
   &__choice {
     color: $main;
     border-bottom: 1px dashed $main;
     cursor: pointer;
     user-select: none;
   }
+
   &__popup {
     position: absolute;
     right: 0;
@@ -32,15 +37,19 @@
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
   }
+
   &__items {
     overflow: hidden;
   }
+
   &__item {
     padding: 12px 20px;
     cursor: pointer;
+
     &--active {
       font-weight: bold;
     }
+
     &--active,
     &:hover {
       color: $main;

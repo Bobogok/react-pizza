@@ -5,6 +5,7 @@
   &__image {
     margin-bottom: 11px;
   }
+
   &__title {
     margin-bottom: 20px;
     margin-bottom: 22px;
@@ -12,6 +13,7 @@
     font-size: 20px;
     letter-spacing: 1%;
   }
+
   &__selector {
     margin-bottom: 17px;
     padding: 6px;
@@ -22,36 +24,43 @@
     background: $lightGrey;
     border-radius: 10px;
   }
+
   &__top-selector {
     display: flex;
     margin-bottom: 7px;
   }
+
   &__top-elem {
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     padding: 8px;
-    &--active {
-      background: $white;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
   }
+
   &__bottom-selector {
     display: flex;
   }
+
   &__bottom-elem {
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     padding: 8px;
-    &--active {
-      background: $white;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
   }
+
+  .active {
+    background: $white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .disabled {
+    color: $darkGrey;
+    pointer-events: none;
+  }
+
   &__bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+
   &__price {
     font-weight: bold;
     font-size: 22px;
