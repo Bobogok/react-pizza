@@ -44,7 +44,7 @@ const cssLoaders = (extra) => {
 const plugins = () => {
   const base = [
     new HTMLWebpackPlugin({
-      template: './index.html',
+      template: 'public/index.html',
       minify: {
         collapseWhitespace: prodMode,
         removeComments: prodMode
@@ -88,10 +88,12 @@ const plugins = () => {
   return base;
 };
 
+console.log(path.join(__dirname, 'public'));
+
 module.exports = {
   stats: 'normal',
-  context: path.resolve(__dirname, 'src'),
-  entry: './index.jsx',
+  // context: path.resolve(__dirname, 'src'),
+  entry: './src/index.jsx',
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'build'),
@@ -107,7 +109,7 @@ module.exports = {
   optimization: optimization(),
   devServer: {
     static: {
-      directory: path.join(__dirname, 'src')
+      directory: path.join(__dirname, 'public')
     },
     historyApiFallback: true,
     compress: true,
