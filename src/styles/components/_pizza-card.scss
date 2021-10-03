@@ -1,6 +1,8 @@
 .pizza-card {
   width: 280px;
   text-align: center;
+  transition: background-color 0.1s ease-in-out;
+  user-select: none;
 
   &__image {
     margin-bottom: 11px;
@@ -30,18 +32,24 @@
     margin-bottom: 7px;
   }
 
-  &__top-elem {
-    flex: 1 0 auto;
-    padding: 8px;
-  }
-
   &__bottom-selector {
     display: flex;
   }
 
-  &__bottom-elem {
+  &__selector-elem {
     flex: 1 0 auto;
     padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+    user-select: none;
+
+    &:hover {
+      background-color: darken($white, 2%);
+    }
+
+    &:active {
+      background-color: darken($white, 5%);
+    }
   }
 
   .active {

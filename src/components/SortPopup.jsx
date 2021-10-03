@@ -51,6 +51,7 @@ function SortPopup({ items }) {
           <ul className="sort__items">
             {items.map((item, index) => (
               <li
+                // eslint-disable-next-line react/no-array-index-key
                 key={`${item}_${index}`}
                 className={classNames('sort__item', { 'sort__item--active': activeItem === index })}
                 onClick={() => onSelectItem(index)}>

@@ -14,7 +14,7 @@ function Categories({ items }) {
         {items.map((item, index) => (
           <li
             key={`${item}_${index}`}
-            className={classNames('categories__item', { 'categories__item--active': activeItem === index })}
+            className={classNames('categories__item', { active: activeItem === index })}
             onClick={() => onSelectItem(index)}>
             {item}
           </li>
