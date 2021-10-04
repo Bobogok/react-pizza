@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classNames';
 
 function Card({ name, imageUrl, price, types, sizes }) {
@@ -65,5 +66,18 @@ function Card({ name, imageUrl, price, types, sizes }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  types: PropTypes.arrayOf(PropTypes.number),
+  sizes: PropTypes.arrayOf(PropTypes.number)
+};
+
+Card.defaultProps = {
+  types: [],
+  sizes: []
+};
 
 export default Card;
