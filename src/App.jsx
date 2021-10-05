@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Route } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { setPizzas as setPizzasAction } from './redux/actions/pizzas';
+import { setPizzas } from './redux/actions/pizzas';
 
 import { Header } from './components';
 import { Home, Cart } from './pages';
@@ -16,8 +16,7 @@ function App() {
     axios
       .get('http://localhost:1337/db.json')
       .then(({ data }) => {
-        console.log(data);
-        dispatch(setPizzasAction(data.pizzas));
+        dispatch(setPizzas(data.pizzas));
       })
       .catch((err) => {
         console.error(err);
