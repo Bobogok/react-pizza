@@ -46,11 +46,11 @@
     padding: 12px 20px;
     cursor: pointer;
 
-    &--active {
+    &.active {
       font-weight: bold;
     }
 
-    &--active,
+    &.active,
     &:hover {
       color: $main;
       background: rgba(254, 95, 30, 0.05);

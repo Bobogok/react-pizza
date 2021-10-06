@@ -1,16 +1,19 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Categories, SortPopup, Card } from '../components';
-import { setCategory } from '../redux/actions/filters';
+import { setCategory, setSortBy } from '../redux/actions/filters';
+import { fetchPizzas } from '../redux/actions/pizzas';
+import LoadingBlock from '../components/Card/LoadingBlock';
 
-const categoriesNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+const categoriesNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortByNames = [
-  { name: 'популярности', type: 'popular' },
-  { name: 'цене', type: 'price' },
-  { name: 'алфавиту', type: 'alphabet' }
+  { name: 'популярности', type: 'popular', order: 'desc' },
+  { name: 'цене', type: 'price', order: 'desc' },
+  { name: 'алфавиту', type: 'name', order: 'asc' }
 ];
 
 function Home() {
+  // This hook returns a reference to the dispatch function from the Redux store.
   const dispatch = useDispatch();
   // The selector will be called with the entire Redux store state as its only argument.
   // The selector will be run whenever the function component renders
@@ -19,19 +22,33 @@ function Home() {
   // useSelector() will also subscribe to the Redux store, and run your selector
   // whenever an action is dispatched.
   const items = useSelector(({ pizzas }) => pizzas.items);
+  const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
+  const { category, sortBy } = useSelector(({ filters }) => filters);
 
-  const onSelectCategiry = useCallback((index) => {
+  useEffect(() => {
+    dispatch(fetchPizzas(sortBy, category));
+  }, [category, sortBy]);
+
+  const onSelectCategory = useCallback((index) => {
     dispatch(setCategory(index));
+  }, []);
+
+  const onSelectSortType = useCallback((type) => {
+    dispatch(setSortBy(type));
   }, []);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories onClickItem={onSelectCategiry} items={categoriesNames} />
-        <SortPopup items={sortByNames} />
+        <Categories activeCategory={category} onClickCategory={onSelectCategory} items={categoriesNames} />
+        <SortPopup items={sortByNames} activeSortType={sortBy.type} onClickSortType={onSelectSortType} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">{items && items.map((obj) => <Card key={obj.id} {...obj} />)}</div>
+      <div className="content__items">
+        {isLoaded
+          ? items.map((obj) => <Card key={obj.id} {...obj} />)
+          : Array.from(Array(10), (_, index) => <LoadingBlock key={index} />)}
+      </div>
     </div>
   );
 }
