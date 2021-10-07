@@ -1,9 +1,9 @@
-@import 'reset';
-@import 'fonts';
-@import 'libs';
-@import 'vars';
-@import 'global';
-@import '../components/all';
+@import './libs/reset';
+@import './libs/fonts';
+@import './libs/libs';
+@import './libs/vars';
+@import './libs/global';
+@import './components/all';
 
 .content {
   padding: 40px 0;
@@ -187,4 +187,4 @@
   }
 }
 
-@import 'media';
+@import './libs/media';

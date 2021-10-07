@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -32,7 +32,12 @@ const optimization = () => {
 };
 
 const cssLoaders = (extra) => {
-  const loaders = [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'];
+  const loaders = [
+    // devMode && require.resolve('style-loader'),
+    prodMode ? MiniCssExtractPlugin.loader : 'style-loader',
+    'css-loader',
+    'postcss-loader'
+  ];
 
   if (extra) {
     loaders.push(extra);
@@ -43,46 +48,66 @@ const cssLoaders = (extra) => {
 
 const plugins = () => {
   const base = [
-    new HTMLWebpackPlugin({
-      template: 'public/index.html',
-      minify: {
-        collapseWhitespace: prodMode,
-        removeComments: prodMode
-      }
-    }),
-    new RemovePlugin({
-      before: {
-        include: ['build']
-        // parameters for "before normal compilation" stage.
-      },
-      watch: {
-        include: ['build']
-        // parameters for "before watch compilation" stage.
-      },
-      after: {
-        // parameters for "after normal and watch compilation" stage.
-      }
-    }),
-    new CleanWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [
+    new HtmlWebpackPlugin(
+      // eslint-disable-next-line prefer-object-spread
+      Object.assign(
+        {},
         {
-          from: path.resolve(__dirname, 'public/img'),
-          to: path.resolve(__dirname, 'build/img')
-        }
-      ],
-      options: {
-        concurrency: 100
-      }
-    }),
-    new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[contenthash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css'
-    })
+          inject: true,
+          template: 'public/index.html'
+        },
+        prodMode
+          ? {
+              minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+              }
+            }
+          : undefined
+      )
+    ),
+    new CleanWebpackPlugin()
   ];
 
   if (prodMode) {
-    // for production
+    base.push(
+      new RemovePlugin({
+        before: {
+          include: ['build']
+          // parameters for "before normal compilation" stage.
+        },
+        watch: {
+          include: ['build']
+          // parameters for "before watch compilation" stage.
+        },
+        after: {
+          // parameters for "after normal and watch compilation" stage.
+        }
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, 'public/img'),
+            to: path.resolve(__dirname, 'build/img')
+          }
+        ],
+        options: {
+          concurrency: 100
+        }
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[id].[contenthash:8].chunk.css'
+      })
+    );
   }
 
   return base;
@@ -122,8 +147,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+          cacheCompression: false,
+          compact: prodMode
         }
       },
       {
