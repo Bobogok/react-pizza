@@ -131,10 +131,15 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
+    historyApiFallback: true,
+    proxy: {
+      '/pizza': {
+        target: 'http://localhost:1338'
+      }
+    },
     static: {
       directory: path.join(__dirname, 'public')
     },
-    historyApiFallback: true,
     compress: true,
     port: 1337,
     open: false,
