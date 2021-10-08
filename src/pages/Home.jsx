@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Categories, SortPopup, Card } from '../components';
 import { setCategory, setSortBy } from '../redux/actions/filters';
 import { fetchPizzas } from '../redux/actions/pizzas';
+import { addPizzaToCard } from '../redux/actions/cart';
 import LoadingBlock from '../components/Card/LoadingBlock';
 
 const categoriesNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
@@ -22,6 +23,7 @@ function Home() {
   // useSelector() will also subscribe to the Redux store, and run your selector
   // whenever an action is dispatched.
   const items = useSelector(({ pizzas }) => pizzas.items);
+  const cartItems = useSelector(({ cart }) => cart.items);
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
   const { category, sortBy } = useSelector(({ filters }) => filters);
 
@@ -37,6 +39,10 @@ function Home() {
     dispatch(setSortBy(type));
   }, []);
 
+  const handleAddPizzaToCart = (obj) => {
+    dispatch(addPizzaToCard(obj));
+  };
+
   return (
     <div className="container">
       <div className="content__top">
@@ -46,7 +52,14 @@ function Home() {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {isLoaded
-          ? items.map((obj) => <Card key={obj.id} {...obj} />)
+          ? items.map((obj) => (
+              <Card
+                onAddtoCart={handleAddPizzaToCart}
+                key={obj.id}
+                addedCount={cartItems[obj.id] && cartItems[obj.id].length}
+                {...obj}
+              />
+            ))
           : Array.from(Array(10), (_, index) => <LoadingBlock key={index} />)}
       </div>
     </div>
