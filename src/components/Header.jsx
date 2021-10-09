@@ -4,15 +4,12 @@ import { useSelector } from 'react-redux';
 import Button from './Button';
 
 function Header() {
-  const { totalPrice, totalCount } = useSelector(({ cart }) => ({
-    totalPrice: cart.totalPrice,
-    totalCount: cart.totalCount
-  }));
+  const { totalPrice, totalCount } = useSelector(({ cart }) => cart);
 
   return (
     <header className="header">
       <div className="header__inner container">
-        <Link className="header__logo" to="/">
+        <Link to="/" className="header__logo">
           <img width="38" height="38" className="header__logo-image" src="./img/pizza-logo.svg" alt="pizza" />
           <div className="header__logo-textBox">
             <h1 className="header__logo-title">REACT PIZZA</h1>

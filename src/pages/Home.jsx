@@ -46,16 +46,8 @@ function Home() {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories
-          activeCategory={category}
-          onClickCategory={onSelectCategory}
-          items={categoriesNames}
-        />
-        <SortPopup
-          items={sortByNames}
-          activeSortType={sortBy.type}
-          onClickSortType={onSelectSortType}
-        />
+        <Categories activeCategory={category} onClickCategory={onSelectCategory} items={categoriesNames} />
+        <SortPopup items={sortByNames} activeSortType={sortBy.type} onClickSortType={onSelectSortType} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
@@ -64,7 +56,7 @@ function Home() {
               <Card
                 onAddtoCart={handleAddPizzaToCart}
                 key={obj.id}
-                addedCount={cartItems[obj.id] && cartItems[obj.id].length}
+                addedCount={cartItems[obj.id] && cartItems[obj.id].items.length}
                 {...obj}
               />
             ))
