@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-function CartItem({ id, name, type, size, totalPrice, totalCount, onRemove, onPlus, onMinus }) {
+function CartItem({ id, name, type, imageUrl, size, totalPrice, totalCount, onRemove, onPlus, onMinus }) {
   const handleRemoveClick = () => {
     onRemove(id);
   };
@@ -16,7 +16,7 @@ function CartItem({ id, name, type, size, totalPrice, totalCount, onRemove, onPl
 
   return (
     <div className="cart-pizza">
-      <img className="cart-pizza__item-img" src="img/pizza/mini-pizza-1.jpg" alt="pizza" />
+      <img className="cart-pizza__item-img" width={80} height={80} src={imageUrl} alt="pizza" />
       <div className="cart-pizza__item-info">
         <h3 className="cart-pizza__item-title">{name}</h3>
         <p className="cart-pizza__description">

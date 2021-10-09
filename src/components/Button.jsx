@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classNames';
 
-function Button({ onClick, className, children, outline, add, circle }) {
+function Button({ onClick, className, children, outline, add, circle, black, cart }) {
   return (
     <button
       type="button"
@@ -9,7 +9,9 @@ function Button({ onClick, className, children, outline, add, circle }) {
       className={classNames('button', className, {
         'button--outline': outline,
         'button--add': add,
-        'button--circle': circle
+        'button--circle': circle,
+        'button--black': black,
+        'button--cart': cart
       })}>
       {children}
     </button>

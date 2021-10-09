@@ -133,9 +133,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-      '/pizza': {
-        target: 'http://localhost:1338'
-      }
+      context: ['/pizza', '/cart'],
+      target: 'http://localhost:1338'
     },
     static: {
       directory: path.join(__dirname, 'public')

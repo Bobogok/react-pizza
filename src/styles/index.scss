@@ -157,6 +157,10 @@
   margin: 0 auto;
   text-align: center;
 
+  span {
+    display: block;
+  }
+
   &__title {
     margin-bottom: 10px;
     font-weight: bold;

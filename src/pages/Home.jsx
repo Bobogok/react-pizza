@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Categories, SortPopup, Card } from '../components';
 import { setCategory, setSortBy } from '../redux/actions/filters';
@@ -13,7 +13,7 @@ const sortByNames = [
   { name: 'алфавиту', type: 'name', order: 'asc' }
 ];
 
-function Home() {
+const Home = memo(function Home() {
   // This hook returns a reference to the dispatch function from the Redux store.
   const dispatch = useDispatch();
   // The selector will be called with the entire Redux store state as its only argument.
@@ -41,6 +41,7 @@ function Home() {
 
   const handleAddPizzaToCart = (obj) => {
     dispatch(addPizzaToCard(obj));
+    dispatch(fetchCart(obj));
   };
 
   return (
@@ -64,6 +65,6 @@ function Home() {
       </div>
     </div>
   );
-}
+});
 
 export default Home;

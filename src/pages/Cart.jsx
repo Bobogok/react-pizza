@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { CartItem, Button } from '../components';
+import { CartItem, Button, Info } from '../components';
 import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/actions/cart';
 
 function Cart() {
+  const [isOrderCompleted, setIsOrderCompleted] = useState(false);
   const dispatch = useDispatch();
 
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
@@ -37,6 +38,7 @@ function Cart() {
     if (confirm('Подтвердите заказ')) {
       dispatch(clearCart());
       alert('Спасибо за заказ)');
+      setIsOrderCompleted(true);
     }
   };
 
@@ -127,6 +129,7 @@ function Cart() {
                   id={obj.id}
                   name={obj.name}
                   type={obj.type}
+                  imageUrl={obj.imageUrl}
                   size={obj.size}
                   totalPrice={items[obj.id].totalPrice}
                   totalCount={items[obj.id].items.length}
@@ -165,17 +168,44 @@ function Cart() {
             </div>
           </div>
         ) : (
-          <div className="empty-cart">
-            <h2 className="empty-cart__title">Корзина пустая 😕</h2>
-            <p className="empty-cart__text">
-              <span>Вероятней всего, вы не заказывали ещё пиццу.</span>
-              <span>Для того, чтобы заказать пиццу, перейди на главную страницу.</span>
-            </p>
-            <img className="empty-cart__img" width="300" height="255" src="/img/empty-cart.png" alt="Empty cart" />
-            <Link to="/" className="empty-cart__button button button--black">
-              <span>Вернуться назад</span>
-            </Link>
-          </div>
+          <Info
+            title={isOrderCompleted ? 'Спасибо за заказ 😊' : 'Корзина пустая 😕'}
+            description={
+              isOrderCompleted ? (
+                <>
+                  <span>Приятного аппетита</span>
+                </>
+              ) : (
+                <>
+                  <span>Вероятней всего, вы не заказывали ещё пиццу.</span>
+                  <span>Для того, чтобы заказать пиццу, перейди на главную страницу.</span>
+                </>
+              )
+            }
+            image={
+              isOrderCompleted ? (
+                <>
+                  <img
+                    className="empty-cart__img"
+                    width="auto"
+                    height="100%"
+                    src="./img/complete-cart.jpg"
+                    alt="Complete order"
+                  />
+                </>
+              ) : (
+                <>
+                  <img
+                    className="empty-cart__img"
+                    width="300"
+                    height="255"
+                    src="./img/empty-cart.png"
+                    alt="Empty cart"
+                  />
+                </>
+              )
+            }
+          />
         )}
       </div>
     </div>
