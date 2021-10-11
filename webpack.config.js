@@ -133,7 +133,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-      context: ['/pizza', '/cart'],
+      context: ['/pizza'],
       target: 'http://localhost:1338'
     },
     static: {

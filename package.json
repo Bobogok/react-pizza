@@ -10,8 +10,8 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development",
     "start:window": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
     "json": "json-server --watch public/db.json --port 1338",
-    "lint:styles": "npx stylelint --fix 'src/styles/**/*.scss'",
-    "lint:all": "prettier --write ."
+    "lint": "stylelint --fix 'src/styles/**/*.scss'",
+    "pretty": "prettier --write ."
   },
   "keywords": [],
   "author": "",

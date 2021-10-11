@@ -24,7 +24,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    grid-column-gap: 35px;
     row-gap: 65px;
   }
 }
@@ -158,10 +157,6 @@
   margin: 0 auto;
   text-align: center;
 
-  span {
-    display: block;
-  }
-
   &__title {
     margin-bottom: 10px;
     font-weight: bold;
@@ -176,6 +171,10 @@
     line-height: 145.4%;
     letter-spacing: 0.01em;
     text-align: center;
+
+    p {
+      display: block;
+    }
   }
 
   &__img {

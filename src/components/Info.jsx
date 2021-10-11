@@ -6,7 +6,7 @@ function Info({ title, description, image }) {
   return (
     <div className="empty-cart">
       <h2 className="empty-cart__title">{title}</h2>
-      <p className="empty-cart__text">{description}</p>
+      <div className="empty-cart__text">{description}</div>
       {image}
       <Link to="/">
         <Button className="empty-cart__button" black>

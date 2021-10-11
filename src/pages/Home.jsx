@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, memo } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Categories, SortPopup, Card } from '../components';
 import { setCategory, setSortBy } from '../redux/actions/filters';
-import { fetchPizzas } from '../redux/actions/pizzas';
 import { addPizzaToCard } from '../redux/actions/cart';
 import LoadingBlock from '../components/Card/LoadingBlock';
 
@@ -13,7 +12,7 @@ const sortByNames = [
   { name: 'алфавиту', type: 'name', order: 'asc' }
 ];
 
-const Home = memo(function Home() {
+function Home({ category, sortBy }) {
   // This hook returns a reference to the dispatch function from the Redux store.
   const dispatch = useDispatch();
   // The selector will be called with the entire Redux store state as its only argument.
@@ -25,11 +24,6 @@ const Home = memo(function Home() {
   const items = useSelector(({ pizzas }) => pizzas.items);
   const cartItems = useSelector(({ cart }) => cart.items);
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
-  const { category, sortBy } = useSelector(({ filters }) => filters);
-
-  useEffect(() => {
-    dispatch(fetchPizzas(sortBy, category));
-  }, [category, sortBy]);
 
   const onSelectCategory = useCallback((index) => {
     dispatch(setCategory(index));
@@ -41,7 +35,6 @@ const Home = memo(function Home() {
 
   const handleAddPizzaToCart = (obj) => {
     dispatch(addPizzaToCard(obj));
-    dispatch(fetchCart(obj));
   };
 
   return (
@@ -65,6 +58,6 @@ const Home = memo(function Home() {
       </div>
     </div>
   );
-});
+}
 
 export default Home;
