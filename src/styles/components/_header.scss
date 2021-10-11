@@ -1,0 +1,29 @@
+.header {
+  padding: 40px 0;
+  border-bottom: 1px solid #f6f6f6;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__logo-image {
+    margin-right: 17px;
+  }
+
+  &__logo-textBox {
+  }
+
+  &__logo-title {
+    font-weight: 800;
+    font-size: 24px;
+  }
+
+  &__logo-text {
+    color: $text;
+  }
+}
