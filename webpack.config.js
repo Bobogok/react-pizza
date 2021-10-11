@@ -167,9 +167,11 @@ module.exports = {
         use: cssLoaders('sass-loader')
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
-        exclude: /node_modules/,
-        use: ['url-loader', 'file-loader']
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
       }
     ]
   }

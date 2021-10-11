@@ -15,7 +15,9 @@ function App() {
         <Route exact path="/">
           <Home category={category} sortBy={sortBy} />
         </Route>
-        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/cart">
+          <Cart />
+        </Route>
       </div>
     </div>
   );

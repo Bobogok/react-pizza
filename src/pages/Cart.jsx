@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { CartItem, Button, Info } from '../components';
 import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/actions/cart';
 
+import emptyCart from '../../public/img/empty-cart.png';
+import completeCart from '../../public/img/complete-cart.jpg';
+
 function Cart() {
+  console.log(emptyCart);
   const [isOrderCompleted, setIsOrderCompleted] = useState(false);
   const dispatch = useDispatch();
 
@@ -184,23 +188,11 @@ function Cart() {
             image={
               isOrderCompleted ? (
                 <>
-                  <img
-                    className="empty-cart__img"
-                    width="auto"
-                    height="100%"
-                    src="./img/complete-cart.jpg"
-                    alt="Complete order"
-                  />
+                  <img className="empty-cart__img" width="auto" height="100%" src={completeCart} alt="Complete order" />
                 </>
               ) : (
                 <>
-                  <img
-                    className="empty-cart__img"
-                    width="300"
-                    height="255"
-                    src="./img/empty-cart.png"
-                    alt="Empty cart"
-                  />
+                  <img className="empty-cart__img" width="300" height="255" src={emptyCart} alt="Empty cart" />
                 </>
               )
             }
