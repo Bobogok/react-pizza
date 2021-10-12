@@ -5,7 +5,6 @@
     "es6": true,
     "node": true
   },
-<<<<<<< HEAD
   "extends": [
     "react-app",
     "react-app/jest",
@@ -14,9 +13,6 @@
     "eslint:recommended",
     "plugin:react/recommended"
   ],
-=======
-  "extends": ["airbnb", "plugin:prettier/recommended", "eslint:recommended", "plugin:react/recommended"],
->>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
@@ -40,10 +36,6 @@
     "react/no-array-index-key": [1],
     "react/prop-types": [0],
     "react/destructuring-assignment": [0, "always"],
-<<<<<<< HEAD
     "import/no-extraneous-dependencies": [1, { "devDependencies": true }]
-=======
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
->>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
   }
 }
