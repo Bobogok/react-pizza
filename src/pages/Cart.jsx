@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
+=======
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CartItem, Button, Info } from '../components';
 import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/actions/cart';
 
+<<<<<<< HEAD
 function Cart({ emptyCart, completeCart }) {
+=======
+import emptyCart from '../../public/img/empty-cart.png';
+import completeCart from '../../public/img/complete-cart.jpg';
+
+function Cart() {
+  console.log(emptyCart);
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
   const [isOrderCompleted, setIsOrderCompleted] = useState(false);
   const dispatch = useDispatch();
 
@@ -56,8 +67,12 @@ function Cart({ emptyCart, completeCart }) {
                   height="18"
                   viewBox="0 0 18 18"
                   fill="none"
+<<<<<<< HEAD
                   xmlns="http://www.w3.org/2000/svg"
                 >
+=======
+                  xmlns="http://www.w3.org/2000/svg">
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
                   <path
                     d="M6.33333 16.3333C7.06971 16.3333 7.66667 15.7364 7.66667 15C7.66667 14.2636 7.06971 13.6667 6.33333 13.6667C5.59695 13.6667 5 14.2636 5 15C5 15.7364 5.59695 16.3333 6.33333 16.3333Z"
                     stroke="white"
@@ -89,8 +104,12 @@ function Cart({ emptyCart, completeCart }) {
                   height="20"
                   viewBox="0 0 20 20"
                   fill="none"
+<<<<<<< HEAD
                   xmlns="http://www.w3.org/2000/svg"
                 >
+=======
+                  xmlns="http://www.w3.org/2000/svg">
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
                   <path
                     d="M2.5 5H4.16667H17.5"
                     stroke="#B6B6B6"
@@ -188,6 +207,7 @@ function Cart({ emptyCart, completeCart }) {
             image={
               isOrderCompleted ? (
                 <>
+<<<<<<< HEAD
                   <img
                     className="empty-cart__img"
                     width="auto"
@@ -205,6 +225,13 @@ function Cart({ emptyCart, completeCart }) {
                     src={`data:image/png;base64, ${emptyCart}`}
                     alt="Empty cart"
                   />
+=======
+                  <img className="empty-cart__img" width="auto" height="100%" src={completeCart} alt="Complete order" />
+                </>
+              ) : (
+                <>
+                  <img className="empty-cart__img" width="300" height="255" src={emptyCart} alt="Empty cart" />
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
                 </>
               )
             }

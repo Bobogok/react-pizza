@@ -3,8 +3,11 @@ import { Link, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Button from './Button';
 
+<<<<<<< HEAD
 import logo from '../assets/img/pizza-logo.svg';
 
+=======
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
 function Header() {
   const { totalPrice, totalCount } = useSelector(({ cart }) => cart);
 
@@ -12,7 +15,11 @@ function Header() {
     <header className="header">
       <div className="header__inner container">
         <Link to="/" className="header__logo">
+<<<<<<< HEAD
           <img width="38" height="38" className="header__logo-image" src={logo} alt="pizza" />
+=======
+          <img width="38" height="38" className="header__logo-image" src="./img/pizza-logo.svg" alt="pizza" />
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
           <div className="header__logo-textBox">
             <h1 className="header__logo-title">REACT PIZZA</h1>
             <p className="header__logo-text">самая вкусная пицца во вселенной</p>
@@ -30,8 +37,12 @@ function Header() {
                   height="18"
                   viewBox="0 0 18 18"
                   fill="none"
+<<<<<<< HEAD
                   xmlns="http://www.w3.org/2000/svg"
                 >
+=======
+                  xmlns="http://www.w3.org/2000/svg">
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
                   <path
                     d="M6.33333 16.3333C7.06971 16.3333 7.66667 15.7364 7.66667 15C7.66667 14.2636 7.06971 13.6667 6.33333 13.6667C5.59695 13.6667 5 14.2636 5 15C5 15.7364 5.59695 16.3333 6.33333 16.3333Z"
                     stroke="white"

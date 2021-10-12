@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
 import classNames from 'classnames';
+=======
+import classNames from 'classNames';
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
 import Button from '../Button';
 
 function Card({ id, name, imageUrl, price, types, sizes, onAddtoCart, addedCount }) {
@@ -44,8 +48,12 @@ function Card({ id, name, imageUrl, price, types, sizes, onAddtoCart, addedCount
               className={classNames('pizza-card__selector-elem', {
                 active: activeType === index,
                 disabled: !types.includes(index)
+<<<<<<< HEAD
               })}
             >
+=======
+              })}>
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
               {type}
             </li>
           ))}
@@ -58,8 +66,12 @@ function Card({ id, name, imageUrl, price, types, sizes, onAddtoCart, addedCount
               className={classNames('pizza-card__selector-elem', {
                 active: activeSize === index,
                 disabled: !sizes.includes(size)
+<<<<<<< HEAD
               })}
             >
+=======
+              })}>
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
               {size} см.
             </li>
           ))}

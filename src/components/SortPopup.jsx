@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
+<<<<<<< HEAD
 import classNames from 'classnames';
+=======
+import classNames from 'classNames';
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
 import PropTypes from 'prop-types';
 
 const SortPopup = memo(function SortPopup({ items, activeSortType, onClickSortType }) {
@@ -35,8 +39,12 @@ const SortPopup = memo(function SortPopup({ items, activeSortType, onClickSortTy
           height="6"
           viewBox="0 0 10 6"
           fill="none"
+<<<<<<< HEAD
           xmlns="http://www.w3.org/2000/svg"
         >
+=======
+          xmlns="http://www.w3.org/2000/svg">
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
           <path
             d="M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z"
             fill="#2C2C2C"
@@ -54,8 +62,12 @@ const SortPopup = memo(function SortPopup({ items, activeSortType, onClickSortTy
               <li
                 key={obj.type}
                 className={classNames('sort__item', { active: activeSortType === obj.type })}
+<<<<<<< HEAD
                 onClick={() => onSelectItem(obj)}
               >
+=======
+                onClick={() => onSelectItem(obj)}>
+>>>>>>> dc5c3600a0e580c2e47e895924f58036c10fdd7b
                 {obj.name}
               </li>
             ))}
